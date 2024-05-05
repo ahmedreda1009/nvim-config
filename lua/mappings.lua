@@ -236,3 +236,5 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 map("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get code definition" })
 map("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get code references" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
+
+vim.api.nvim_set_keymap("n", "<C-m>", '<cmd>lua require("maximizer").toggle()<CR>', { silent = true, noremap = true })

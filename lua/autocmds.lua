@@ -85,4 +85,4 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Entery Message
-vim.cmd 'autocmd VimEnter * lua print("Welcome back Nerds!!")'
+vim.cmd 'autocmd VimEnter * lua print("SUP NERD!")'

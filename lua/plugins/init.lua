@@ -9,6 +9,8 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    cmd = "LspInfo",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.lspconfig"
     end,
@@ -20,7 +22,7 @@ return {
       ensure_installed = {
         "typescript-language-server",
         "tailwindcss-language-server",
-        "emmet-language-server",
+        -- "emmet-language-server",
         "lua-language-server",
         "stylua",
         "eslint-lsp",
@@ -33,7 +35,7 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = false,
+    -- lazy = false,
     opts = {
       auto_install = true,
     },
@@ -108,6 +110,25 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = "Telescope",
+    opts = function()
+      return require "configs.telescope"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "telescope")
+      local telescope = require "telescope"
+      telescope.setup(opts)
+
+      -- load extensions
+      for _, ext in ipairs(opts.extensions_list) do
+        telescope.load_extension(ext)
+      end
+    end,
   },
 
   {
@@ -187,5 +208,32 @@ return {
         col = 1,
       },
     },
+  },
+
+  {
+    "kevinhwang91/nvim-ufo",
+    event = "BufEnter",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    config = function()
+      --- @diagnostic disable: unused-local
+      require("ufo").setup {
+        provider_selector = function(_bufnr, _filetype, _buftype)
+          return { "treesitter", "indent" }
+        end,
+      }
+    end,
+  },
+
+  {
+    "0x00-ketsu/maximizer.nvim",
+    config = function()
+      require("maximizer").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end,
   },
 }
