@@ -84,8 +84,5 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- change cursor line number
--- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#FFC900", bold = true })
-
 -- Entery Message
 vim.cmd 'autocmd VimEnter * lua print("Welcome back Nerds!!")'

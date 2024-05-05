@@ -23,7 +23,7 @@ M.ui = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
-    CursorLineNr = { fg = "#000000", bg = "#ff0000" },
+    CursorLineNr = { fg = "#FFC900", bold = true },
   },
 }
 
