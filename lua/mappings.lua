@@ -19,6 +19,13 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 -- buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new" })
+map("n", "<leader>bda", function()
+  require("nvchad.tabufline").closeAllBufs()
+end, { desc = "buffer delete all" })
+map("n", "<leader>bdo", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "buffer delete one" })
 
 -- better indenting
 map("v", "<", "<gv")

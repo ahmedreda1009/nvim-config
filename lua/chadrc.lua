@@ -5,11 +5,15 @@
 local M = {}
 
 M.ui = {
-  theme = "chadracula-evondev",
+  theme = "tokyodark",
 
   statusline = {
     theme = "default",
     separator_style = "default",
+  },
+
+  cmp = {
+    style = "flat_dark",
   },
 
   nvdash = {
