@@ -20,6 +20,7 @@ return {
       ensure_installed = {
         "typescript-language-server",
         "tailwindcss-language-server",
+        "emmet-language-server",
         "lua-language-server",
         "stylua",
         "eslint-lsp",
@@ -28,6 +29,23 @@ return {
         "prettierd",
       },
     },
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    opts = {
+      auto_install = true,
+    },
+    config = function()
+      require("mason-lspconfig").setup {
+        ensure_installed = { "lua_ls" },
+      }
+    end,
+  },
+
+  {
+    "hrsh7th/cmp-nvim-lsp",
   },
 
   {

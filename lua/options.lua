@@ -29,7 +29,7 @@ o.mouse = "a"
 
 -- Numbers
 -- o.number = true
-o.numberwidth = 2
+o.numberwidth = 3
 o.ruler = false
 
 -- disable nvim intro

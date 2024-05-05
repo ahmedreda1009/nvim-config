@@ -17,7 +17,9 @@ map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "file save" })
+-- save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+-- map("n", "<C-s>", "<cmd>w<CR>", { desc = "file save" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole" })
 
 -- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
@@ -201,3 +203,33 @@ map("n", "[t", function()
 end, { desc = "Previous todo comment" })
 
 todo_comments.setup()
+
+-- formatting
+map({ "n", "v" }, "<leader>cf", function()
+  LazyVim.format { force = true }
+end, { desc = "Format" })
+vim.keymap.set("n", "<leader>gp", vim.lsp.buf.format, { desc = "Prettier formatting" })
+
+-- diagnostic
+local diagnostic_goto = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go { severity = severity }
+  end
+end
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+
+-- quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
+-- code actions
+map("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Get code definition" })
+map("n", "<leader>gr", vim.lsp.buf.references, { desc = "Get code references" })
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
