@@ -159,6 +159,9 @@ end, { desc = "buffer delete all" })
 map("n", "<leader>bdo", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer delete one" })
+map("n", "<leader>bx", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "buffer delete current" })
 
 -- better indenting
 map("v", "<", "<gv")
