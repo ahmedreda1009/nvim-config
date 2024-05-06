@@ -47,8 +47,8 @@ local options = {
     mappings = {
       n = { ["q"] = require("telescope.actions").close },
       i = {
-        ["<C-k>"] = require("telescope.actions").move_selection_previous,
-        ["<C-j>"] = require("telescope.actions").move_selection_next,
+        ["<C-p>"] = require("telescope.actions").move_selection_previous,
+        ["<C-n>"] = require("telescope.actions").move_selection_next,
         ["<C-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist,
         ["<C-x>"] = require("telescope.actions").delete_buffer,
       },

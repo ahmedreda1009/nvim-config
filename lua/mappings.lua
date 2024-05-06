@@ -5,10 +5,10 @@ local map = vim.keymap.set
 -- nvchad mappings
 -- map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 -- map("i", "<C-e>", "<End>", { desc = "move end of line" })
-map("i", "<C-h>", "<Left>", { desc = "move left" })
-map("i", "<C-l>", "<Right>", { desc = "move right" })
-map("i", "<C-j>", "<Down>", { desc = "move down" })
-map("i", "<C-k>", "<Up>", { desc = "move up" })
+-- map("i", "<C-h>", "<Left>", { desc = "move left" })
+-- map("i", "<C-l>", "<Right>", { desc = "move right" })
+-- map("i", "<C-j>", "<Down>", { desc = "move down" })
+-- map("i", "<C-k>", "<Up>", { desc = "move up" })
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
@@ -18,7 +18,7 @@ map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 -- save file
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<CR><ESC>", { desc = "Save File" })
 -- map("n", "<C-s>", "<cmd>w<CR>", { desc = "file save" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole" })
 
@@ -26,9 +26,9 @@ map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole" })
 -- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
 
-map("n", "<leader>fm", function()
-  require("configs.conform").format { lsp_fallback = true }
-end, { desc = "format files" })
+-- map("n", "<leader>fm", function()
+--   require("configs.conform").format { lsp_fallback = true }
+-- end, { desc = "format files" })
 
 -- global lsp mappings
 -- map("n", "<leader>lf", vim.diagnostic.open_float, { desc = "lsp floating diagnostics" })
