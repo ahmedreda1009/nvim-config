@@ -1,5 +1,9 @@
 return {
   {
+    "nvim-lua/plenary.nvim",
+  },
+
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     config = function()
@@ -132,14 +136,33 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      return require "nvchad.configs.nvimtree"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "nvimtree")
+      require("nvim-tree").setup(opts)
+    end,
+  },
+
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
 
   {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
+    "NvChad/nvim-colorizer.lua",
+    event = "User FilePost",
+    opts = { user_default_options = { names = false } },
+    config = function(_, opts)
+      require("colorizer").setup(opts)
+
+      -- execute colorizer as soon as possible
+      vim.defer_fn(function()
+        require("colorizer").attach_to_buffer(0)
+      end, 0)
     end,
   },
 
@@ -179,6 +202,21 @@ return {
 
   {
     "nvim-telescope/telescope-ui-select.nvim",
+  },
+
+  {
+    "numToStr/Comment.nvim",
+    keys = {
+      { "gcc", mode = "n", desc = "comment toggle current line" },
+      { "gc", mode = { "n", "o" }, desc = "comment toggle linewise" },
+      { "gc", mode = "x", desc = "comment toggle linewise (visual)" },
+      { "gbc", mode = "n", desc = "comment toggle current block" },
+      { "gb", mode = { "n", "o" }, desc = "comment toggle blockwise" },
+      { "gb", mode = "x", desc = "comment toggle blockwise (visual)" },
+    },
+    config = function(_, opts)
+      require("Comment").setup(opts)
+    end,
   },
 
   {
@@ -354,6 +392,16 @@ return {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "devicons")
       require("nvim-web-devicons").setup(opts)
+    end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+    cmd = "WhichKey",
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "whichkey")
+      require("which-key").setup(opts)
     end,
   },
 }
