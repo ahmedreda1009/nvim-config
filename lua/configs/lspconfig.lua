@@ -5,7 +5,14 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 -- volar server is for VueJS
-local servers = { "html", "cssls", "tsserver", "tailwindcss", "eslint", "volar" }
+local servers = {
+  "html",
+  "cssls",
+  "tsserver",
+  "tailwindcss",
+  "eslint",
+  -- "volar",
+}
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
