@@ -23,6 +23,18 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+local mason_registry = require "mason-registry"
+local typescript_language_server_path = mason_registry.get_package("typescript-language-server"):get_install_path()
+  .. "/node_modules/typescript/lib/"
+lspconfig.volar.setup {
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  init_options = {
+    typescript = {
+      tsdk = typescript_language_server_path,
+    },
+  },
+}
+
 -- local mason_registry = require "mason-registry"
 -- local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
 --   .. "/node_modules/@vue/language-server"
