@@ -28,6 +28,9 @@ local typescript_language_server_path = mason_registry.get_package("typescript-l
   .. "/node_modules/typescript/lib/"
 lspconfig.volar.setup {
   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
   init_options = {
     typescript = {
       tsdk = typescript_language_server_path,
