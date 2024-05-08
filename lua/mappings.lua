@@ -239,3 +239,5 @@ map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
 
 -- maximizer for window
 vim.api.nvim_set_keymap("n", "<C-m>", '<cmd>lua require("maximizer").toggle()<CR>', { silent = true, noremap = true })
+
+map("n", "<C-p>", "<cmd>MarkdownPreviewToggle<CR>", { desc = "preview markdown" })
