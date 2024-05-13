@@ -5,11 +5,18 @@
 local M = {}
 
 M.ui = {
-  theme = "tokyodark",
+  theme = "chadracula-evondev",
 
   statusline = {
     theme = "default",
     separator_style = "default",
+  },
+
+  tabufline = {
+    enabled = true,
+    lazyload = true,
+    order = { "treeOffset", "buffers", "tabs", "btns" },
+    modules = nil,
   },
 
   cmp = {
